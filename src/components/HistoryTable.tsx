@@ -71,7 +71,11 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
             </TableHeader>
             <TableBody>
               {data
-                .sort((a, b) => parseInt(b.draw_id) - parseInt(a.draw_id))
+                .sort((a, b) => {
+                  const aNum = parseInt(a.draw_id.replace('D', '')) || 0;
+                  const bNum = parseInt(b.draw_id.replace('D', '')) || 0;
+                  return bNum - aNum;
+                })
                 .slice(0, 100).map((record) => (
                 <TableRow key={record.id} className="border-border/50 hover:bg-muted/30">
                   <TableCell className="font-medium">
