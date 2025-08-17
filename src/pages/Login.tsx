@@ -21,7 +21,7 @@ export const Login = ({ onLogin }: LoginProps) => {
     setIsLoading(true);
 
     // Simple hardcoded authentication
-    if (username === "Admin" && password === "Hollopoint360$") {
+    if (username === "admin@gmail.com" && password === "Hollopoint360$") {
       localStorage.setItem("isAuthenticated", "true");
       onLogin();
       toast({
