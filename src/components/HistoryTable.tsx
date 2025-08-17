@@ -37,8 +37,8 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
   };
 
   return (
-    <Card className="bg-gradient-card border-border/50 shadow-card">
-      <div className="p-6">
+    <Card className="bg-gradient-card border-border/50 shadow-card w-full">
+      <div className="p-3 sm:p-6">
         <div className="flex items-center gap-2 mb-6">
           <History className="w-6 h-6 text-primary" />
           <h3 className="text-2xl font-bold">Draw History</h3>
@@ -47,26 +47,26 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
           </Badge>
         </div>
 
-        <div className="rounded-lg border border-border/50 overflow-hidden">
-          <Table>
+        <div className="rounded-lg border border-border/50 overflow-x-auto">
+          <Table className="min-w-full">
             <TableHeader>
               <TableRow className="border-border/50">
-                <TableHead className="w-24">
+                <TableHead className="w-20 sm:w-24 text-xs sm:text-sm">
                   Draw #
                 </TableHead>
-                <TableHead>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    Date
+                <TableHead className="text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Date</span>
                   </div>
                 </TableHead>
-                <TableHead>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    Time
+                <TableHead className="text-xs sm:text-sm">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Time</span>
                   </div>
                 </TableHead>
-                <TableHead className="text-right">Number</TableHead>
+                <TableHead className="text-right text-xs sm:text-sm">Number</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -78,17 +78,18 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
                 })
                 .slice(0, 100).map((record) => (
                 <TableRow key={record.id} className="border-border/50 hover:bg-muted/30">
-                  <TableCell className="font-medium">
+                  <TableCell className="font-medium text-xs sm:text-sm p-2 sm:p-4">
                     {record.draw_id}
                   </TableCell>
-                  <TableCell>{record.date}</TableCell>
-                  <TableCell>
-                    <Badge variant={getTimeBadgeVariant(record.time)} className="text-xs">
-                      {getTimeIcon(record.time)} {record.time}
+                  <TableCell className="text-xs sm:text-sm p-2 sm:p-4">{record.date}</TableCell>
+                  <TableCell className="p-2 sm:p-4">
+                    <Badge variant={getTimeBadgeVariant(record.time)} className="text-xs px-1 sm:px-2">
+                      <span className="sm:hidden">{getTimeIcon(record.time)}</span>
+                      <span className="hidden sm:inline">{getTimeIcon(record.time)} {record.time}</span>
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/20 text-primary font-bold">
+                  <TableCell className="text-right p-2 sm:p-4">
+                    <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 text-primary font-bold text-xs sm:text-base">
                       {record.number}
                     </div>
                   </TableCell>

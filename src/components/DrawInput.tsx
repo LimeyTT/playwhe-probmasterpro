@@ -38,8 +38,8 @@ export const DrawInput = ({ onSubmit }: DrawInputProps) => {
   };
 
   return (
-    <Card className="bg-gradient-card border-border/50 shadow-card">
-      <div className="p-6">
+    <Card className="bg-gradient-card border-border/50 shadow-card w-full">
+      <div className="p-4 sm:p-6">
         <div className="text-center mb-6">
           <h3 className="text-2xl font-bold flex items-center justify-center gap-2 mb-2">
             <Zap className="w-6 h-6 text-warning" />
@@ -50,7 +50,7 @@ export const DrawInput = ({ onSubmit }: DrawInputProps) => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex gap-4 max-w-md mx-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
           <Input
             type="number"
             min="1"
@@ -58,11 +58,11 @@ export const DrawInput = ({ onSubmit }: DrawInputProps) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Enter draw number (1-36)"
-            className="flex-1 bg-background/50 border-border"
+            className="flex-1 bg-background/50 border-border w-full"
           />
           <Button 
             type="submit" 
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 w-full sm:w-auto"
             disabled={!inputValue}
           >
             <Plus className="w-4 h-4 mr-2" />

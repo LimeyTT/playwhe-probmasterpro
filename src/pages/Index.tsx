@@ -176,19 +176,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-12 relative">
-          <Button
-            onClick={logout}
-            variant="outline"
-            size="sm"
-            className="absolute top-0 right-0"
-          >
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </Button>
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-full overflow-x-hidden">
+        <header className="text-center mb-8 sm:mb-12">
+          <div className="flex justify-end mb-4">
+            <Button
+              onClick={logout}
+              variant="outline"
+              size="sm"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
+          </div>
           
-          <h1 className="text-3xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
             PlayWhe ProbMaster Pro
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-4">
@@ -211,12 +212,12 @@ const Index = () => {
           )}
         </header>
 
-        <div className="grid gap-8 max-w-6xl mx-auto">
+        <div className="grid gap-4 sm:gap-8 w-full max-w-6xl mx-auto">
           {processedPredictions.length > 0 ? (
             <>
               <PredictionDisplay predictions={processedPredictions} />
               
-              <Card className="p-4 md:p-6 bg-gradient-card border-border/50">
+              <Card className="p-3 sm:p-4 md:p-6 bg-gradient-card border-border/50 w-full">
                 <div className="text-center">
                   <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center justify-center gap-2">
                     <TrendingUp className="w-5 h-5 text-primary" />
@@ -250,7 +251,7 @@ const Index = () => {
               </Card>
             </>
           ) : (
-            <Card className="p-6 md:p-8 text-center bg-gradient-card border-border/50">
+            <Card className="p-4 sm:p-6 md:p-8 text-center bg-gradient-card border-border/50 w-full">
               <AlertTriangle className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
               <h3 className="text-lg md:text-xl font-bold mb-2">Insufficient Data for 90%+ Accuracy</h3>
               <p className="text-muted-foreground mb-4">

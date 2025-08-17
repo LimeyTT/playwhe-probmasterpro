@@ -30,10 +30,10 @@ export const PredictionDisplay = ({ predictions }: PredictionDisplayProps) => {
         <p className="text-sm md:text-base text-muted-foreground">Top 5 most likely numbers based on statistical analysis</p>
       </div>
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 w-full">
         {topPredictions.map((prediction, index) => (
-          <Card key={prediction.number} className="relative overflow-hidden bg-gradient-card border-border/50 hover:shadow-glow transition-all duration-300">
-            <div className="p-4 md:p-6 text-center">
+          <Card key={prediction.number} className="relative overflow-hidden bg-gradient-card border-border/50 hover:shadow-glow transition-all duration-300 w-full">
+            <div className="p-3 sm:p-4 md:p-6 text-center">
               <div className="absolute top-2 right-2">
                 <Badge variant="secondary" className="text-xs">
                   #{index + 1}
