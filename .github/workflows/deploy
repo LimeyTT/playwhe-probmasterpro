@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grant write permissions for the GITHUB_TOKEN
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (if needed for your project)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Or your desired Node.js version
+
+      - name: Install dependencies (if needed)
+        run: npm install # Or yarn install, etc.
+
+      - name: Build project (if needed)
+        run: npm run build # Or your build command
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Or the directory where your built site resides
+          publish_branch: gh-pages # The branch GitHub Pages will serve from
