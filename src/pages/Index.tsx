@@ -227,21 +227,22 @@ const Index = () => {
                     <p className="text-sm text-muted-foreground text-center">{predictionSet.recommendation}</p>
                     
                     <div className="grid gap-4 md:gap-6">
-                      {predictionSet.predictions.slice(0, 3).map((prediction, index) => (
+                      {processedPredictions.slice(0, 3).map((prediction, index) => (
                         <div key={prediction.number} className="border-l-4 border-primary/30 pl-4 text-left">
                           <div className="flex items-center justify-center md:justify-start gap-2 mb-2 flex-wrap">
                             <span className="text-lg font-bold text-primary">#{prediction.number}</span>
-                            <Badge variant={getAccuracyBadgeVariant(prediction.accuracy)} className="text-xs">
-                              {(prediction.accuracy * 100).toFixed(1)}% Accuracy
+                            <Badge variant={getAccuracyBadgeVariant(prediction.probability)} className="text-xs">
+                              {(prediction.probability * 100).toFixed(1)}% Accuracy
                             </Badge>
-                            <Badge variant={prediction.riskLevel === 'LOW' ? 'default' : prediction.riskLevel === 'MEDIUM' ? 'secondary' : 'destructive'} className="text-xs">
-                              {prediction.riskLevel} Risk
+                            <Badge variant="secondary" className="text-xs">
+                              MEDIUM Risk
                             </Badge>
                           </div>
                           <ul className="text-xs text-muted-foreground space-y-1 text-center md:text-left">
-                            {prediction.reasoning.map((reason, idx) => (
-                              <li key={idx}>• {reason}</li>
-                            ))}
+                            <li>• Drawn {prediction.frequency} times vs expected 17.1</li>
+                            <li>• Chinese pairs score: {(prediction.chineseScore * 100).toFixed(0)}%</li>
+                            <li>• Last seen: {prediction.daysSince} draws ago</li>
+                            <li>• Time pattern score: {(prediction.timePatternScore * 100).toFixed(0)}%</li>
                           </ul>
                         </div>
                       ))}
