@@ -52,10 +52,7 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
             <TableHeader>
               <TableRow className="border-border/50">
                 <TableHead className="w-24">
-                  <div className="flex items-center gap-2">
-                    <Hash className="w-4 h-4" />
-                    Draw #
-                  </div>
+                  Draw #
                 </TableHead>
                 <TableHead>
                   <div className="flex items-center gap-2">
@@ -73,7 +70,9 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {data.slice(0, 50).map((record) => (
+              {data
+                .sort((a, b) => parseInt(b.draw_id) - parseInt(a.draw_id))
+                .slice(0, 100).map((record) => (
                 <TableRow key={record.id} className="border-border/50 hover:bg-muted/30">
                   <TableCell className="font-medium">
                     {record.draw_id}
@@ -95,9 +94,9 @@ export const HistoryTable = ({ data }: HistoryTableProps) => {
           </Table>
         </div>
         
-        {data.length > 50 && (
+        {data.length > 100 && (
           <div className="text-center mt-4 text-sm text-muted-foreground">
-            Showing latest 50 records of {data.length} total
+            Showing latest 100 records of {data.length} total
           </div>
         )}
       </div>
